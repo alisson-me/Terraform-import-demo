@@ -1,0 +1,38 @@
+#terraform import examples. Best practice is to create a seperate provider.tf file 
+#ec2.tf
+
+resource "aws_instance" "new_ec2" {
+  ami                     = "ami-00cf98409072261a7"
+  instance_type           = "t2.micro"
+
+  tags ={
+    Name = "my_ec2"
+  }
+}
+
+
+#s3.tf
+
+resource "aws_s3_bucket" "new_s3" {
+  bucket = "obenss3newbucket"
+
+}
+
+
+#vpc
+# 1- create vpc
+resource "aws_vpc" "new_vpc" {
+  cidr_block       = "10.0.0.0/24"
+  instance_tenancy = "default"
+}
+
+
+
+#provider
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
+}
