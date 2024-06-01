@@ -11,7 +11,7 @@ resource "aws_instance" "new_ec2" {
 }
 
 
-#s3.tf
+#s3.tf (should be in a seperate file)
 
 resource "aws_s3_bucket" "new_s3" {
   bucket = "nextss3newbucket"
@@ -19,7 +19,7 @@ resource "aws_s3_bucket" "new_s3" {
 }
 
 
-#vpc
+#vpc (should be in a seperate file)
 # 1- create vpc
 resource "aws_vpc" "new_vpc" {
   cidr_block       = "10.0.0.0/24"
@@ -28,7 +28,7 @@ resource "aws_vpc" "new_vpc" {
 
 
 
-#provider
+#provider. (This should be in a seperate file.)
 terraform {
   required_providers {
     aws = {
