@@ -1,0 +1,50 @@
+#1 - Ec2-instance block example Main.tf 
+
+resource "aws_instance" "my_linux_server" {
+  ami           = var.newami
+  instance_type = var.newlinux
+  subnet_id     = "subnet-07c7f29e75cb6c68e"
+  #count = var.newcount
+
+  tags = {
+    Name = var.newtag
+  }
+}
+
+
+
+#2 - Output variable block Example
+output "instance_ip_addr" {
+  value = aws_instance.my_linux_server.private_ip
+}
+
+output "instance_dns" {
+  value = aws_instance.my_linux_server.private_dns
+}
+
+
+
+#3 - VARIABLE.tf  file example
+variable "newlinux" {
+  type        = string
+  default     = "t2.micro"
+  description = "my linux instance"
+}
+
+variable "newami" {
+  type        = string
+  default     = "ami-01696b58b81f79ae1"
+  description = "my linux id"
+}
+
+variable "newtag" {
+  type        = string
+  default     = "linux"
+  description = "my linux tag"
+}
+
+#variable "newcount"{
+#type = number
+#default = 2
+#description = "number of linux servers"
+#}
