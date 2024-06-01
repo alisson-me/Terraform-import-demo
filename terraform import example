@@ -14,7 +14,7 @@ resource "aws_instance" "new_ec2" {
 #s3.tf
 
 resource "aws_s3_bucket" "new_s3" {
-  bucket = "obenss3newbucket"
+  bucket = "nextss3newbucket"
 
 }
 
